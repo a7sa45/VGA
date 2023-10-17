@@ -4,6 +4,15 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class=" my-5">
+                <div class="p-5 text-center bg-white rounded-3" style="border: 0.5px solid black">
+                    <h1 class="text-body-emphasis">Register here !</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
