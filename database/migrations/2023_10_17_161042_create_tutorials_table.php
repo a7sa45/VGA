@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('tutorials', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->string('image_path');
+            $table->string('url');
+            $table->string('file_path');
+
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

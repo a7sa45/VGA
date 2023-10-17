@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Tutorial extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'image_path',
+        'url',
+        'file_path',
+        'user_id',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
