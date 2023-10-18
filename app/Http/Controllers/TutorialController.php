@@ -18,7 +18,7 @@ class TutorialController extends Controller
     public function index()
     {
         $tutorials = Tutorial::all();
-        return view('tutorials.index', ['tutorials' => $tutorials]);
+        return view('tutorials.index', compact('tutorials'));
     }
 
     /**
@@ -66,7 +66,7 @@ class TutorialController extends Controller
 
         
 
-        return redirect('/tutorials')->with('success', 'تم انشاء الاختصار بنجاح !');
+        return redirect('/tutorials')->with('success', 'Tutorial created !');
     }
 
     /**
@@ -74,7 +74,11 @@ class TutorialController extends Controller
      */
     public function show(Tutorial $tutorial)
     {
-        //
+        if($tutorial == null)
+        {
+            abort(404);
+        }
+        return view('tutorials.show', compact('tutorial'));
     }
 
     /**
@@ -98,6 +102,11 @@ class TutorialController extends Controller
      */
     public function destroy(Tutorial $tutorial)
     {
-        //
+        if($tutorial == null)
+        {
+            abort(404);
+        }
+        $tutorial->delete();
+        return redirect('/tutorials')->with('success', 'Tutorial is deleted');
     }
 }

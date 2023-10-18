@@ -35,10 +35,9 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Type') }}</label>
+                            <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Choose are you teacher or student?') }}</label>
                             <div class="col-md-6">
                                 <select name="role" class="custom-select form-control @error('role') is-invalid @enderror" id="inputGroupSelect01">
-                                    <option selected>Choose are you teacher or student?</option>
                                     <option value="teacher">Teacher</option>
                                     <option value="student">Student</option>
                                 </select>

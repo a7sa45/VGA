@@ -73,6 +73,28 @@
                 </div>
             </div>
         </nav>
+        <div class="container">
+            <div class="row justify-content-center">
+                {{-- Message --}}
+                @if (Session::has('success'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong></strong> {{ session('success') }}
+                </div>
+                @endif
+
+                @if (Session::has('warning'))
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <strong></strong> {{ session('warning') }}
+                </div>
+                @endif
+            </div>
+        </div>
 
         <main class="py-4">
             @yield('content')

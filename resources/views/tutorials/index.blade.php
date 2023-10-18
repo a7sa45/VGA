@@ -20,10 +20,10 @@
                     <div class="card-header">
                         <small class="text-body-secondary">{{ $tutorial->user->name }}</small>
                     </div>
-                    <img src="/images/{{ $tutorial->image_path }}" class="" alt="...">
+                    <img src="/images/{{ $tutorial->image_path }}" class="" alt="..." style="max-height: 200px">
                     <div class="card-body">
                       <h5 class="card-title">{{ $tutorial->title }}</h5>
-                      <p class="card-text">{{ $tutorial->description }}</p>
+                      <p class="card-text"><a href="/tutorials/{{ $tutorial->id }}" class="btn btn-primary my-2">Show</a></p>
                     </div>
                     <div class="card-footer">
                       <small class="text-body-secondary">{{ $tutorial->created_at->format('D, Y h:i A') }}</small>
