@@ -17,7 +17,8 @@ class TutorialController extends Controller
      */
     public function index()
     {
-        return view('tutorials.index');
+        $tutorials = Tutorial::all();
+        return view('tutorials.index', ['tutorials' => $tutorials]);
     }
 
     /**
