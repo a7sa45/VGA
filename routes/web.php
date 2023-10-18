@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -23,3 +23,4 @@ Auth::routes();
 Route::resource('/tutorials', TutorialController::class)->name('*','tutorials');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/editor', [App\Http\Controllers\HomeController::class, 'editor'])->name('editor');
