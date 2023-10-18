@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tutorial;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 class TutorialController extends Controller
@@ -24,7 +25,7 @@ class TutorialController extends Controller
      */
     public function create()
     {
-        //
+        return view('tutorials.create');
     }
 
     /**
@@ -32,7 +33,39 @@ class TutorialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'title'  => ['required', 'string'],
+            'description'   => ['required', 'string'],
+            'url'    => ['required', 'url'],
+            'image_path'   => ['required', 'image', 'mimes:png,jpg,jpeg', 'max:2048'],
+            'file_path'  => ['required', 'image', 'mimes:png,jpg,jpeg', 'max:2048'],    
+        ]);
+
+        if($request->image_path){
+            $imageName = time().'.'.$request->image_path->extension();
+            // Public Folder
+            $request->image_path->move(public_path('images'), $imageName);
+        }
+
+        if($request->file_path){
+            $fileNmae = time().'.'.$request->file_path->extension();
+            // Public Folder
+            $request->file_path->move(public_path('files'), $imageName);
+        }
+
+        $tutorial = new Tutorial();
+
+        $tutorial->title = $data['title'];
+        $tutorial->description = $data['description'];
+        $tutorial->url = $data['url'];
+        $tutorial->image_path = $imageName;
+        $tutorial->file_path = $fileNmae;
+        $tutorial->user_id = auth()->user()->id;
+        $tutorial->save();
+
+        
+
+        return redirect('/tutorials')->with('success', 'تم انشاء الاختصار بنجاح !');
     }
 
     /**
