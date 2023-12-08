@@ -35,4 +35,10 @@ class HomeController extends Controller
     {
         return view('index');
     }
+
+    public function teacher()
+    {
+        $teachers = User::all()->where('role', 'teacher');
+        return view('teacher', compact('teachers'));
+    }
 }

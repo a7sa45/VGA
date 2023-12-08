@@ -57,15 +57,15 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/web.loader.js";
+      var loaderUrl = buildUrl + "/Build.loader.js";
       var config = {
-        dataUrl: buildUrl + "/web.data.unityweb",
-        frameworkUrl: buildUrl + "/web.framework.js.unityweb",
-        codeUrl: buildUrl + "/web.wasm.unityweb",
+        dataUrl: buildUrl + "/Build.data.unityweb",
+        frameworkUrl: buildUrl + "/Build.framework.js.unityweb",
+        codeUrl: buildUrl + "/Build.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "null",
+        companyName: "VGA",
         productName: "VGA",
-        productVersion: "0.1",
+        productVersion: "1.0",
         showBanner: unityShowBanner,
       };
 
