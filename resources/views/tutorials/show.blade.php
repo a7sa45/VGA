@@ -48,7 +48,7 @@
                             <h5 class="card-title">{{ $graph->name }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">from @ {{ $graph->user->name }}</h6>
                             
-                            <a href="{{ $graph->id }}" class="card-link">show</a>
+                            <a href="/editor/{{ $graph->id }}" class="card-link">show</a>
                             </div>
                         </div>
                     @endforeach
