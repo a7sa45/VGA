@@ -23,24 +23,16 @@
                     <p class="fs-5 mb-4">{{ $tutorial->description }}</p>
                 </section>
                 <div class="row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Graph 1</h5>
-                          <br>
-                          <a href="#" class="btn btn-primary">Show</a>
+                    @foreach ($graphs as $graph)
+                        <div class="card m-2" style="width: 18rem;">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ $graph->name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">from @ {{ $graph->user->name }}</h6>
+                            <a href="/editor/{{ $graph->id }}" class="card-link">show</a>
+                            <a href="#" class="card-link">Another link</a>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Graph 2</h5>
-                          <br>
-                          <a href="#" class="btn btn-primary">Show</a>
-                        </div>
-                      </div>
-                    </div>
+                    @endforeach
                   </div>
                   <br><br>
             </article>

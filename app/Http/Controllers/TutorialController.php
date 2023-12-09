@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tutorial;
+use App\Models\Graph;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
@@ -78,7 +79,8 @@ class TutorialController extends Controller
         {
             abort(404);
         }
-        return view('tutorials.show', compact('tutorial'));
+        $graphs = Graph::all();
+        return view('tutorials.show', compact('tutorial', 'graphs'));
     }
 
     /**

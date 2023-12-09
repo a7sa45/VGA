@@ -15,6 +15,7 @@
                     @endif
 
                     <div class="row row-cols-1 row-cols-md-3 g-4">
+                        
                         @foreach ($tutorials as $tutorial)
                           <div class="col">
                             <div class="card h-100">

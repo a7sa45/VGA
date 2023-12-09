@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tutorial;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('editor');
+        $this->middleware('auth')->except('editor', 'deleteCoo');
     }
 
     /**
@@ -26,19 +27,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         $user = Auth::user();
         $tutorials = Tutorial::all()->where('user_id', $user->id);
         return view('home', compact('tutorials'));
-    }
-
-    public function editor()
-    {
-        return view('index');
     }
 
     public function teacher()
     {
         $teachers = User::all()->where('role', 'teacher');
         return view('teacher', compact('teachers'));
+    }
+
+    public function deleteCoo()
+    {
+        return response('deleted')->cookie('graph_id', null, -1);
     }
 }
