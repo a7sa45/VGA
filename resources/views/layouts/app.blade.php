@@ -14,6 +14,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="icon" href="{{ asset('images/icon_c.png') }}" sizes="32x32" type="image/png">
+    <link rel="icon" href="{{ asset('images/icon_c.png') }}" sizes="16x16" type="image/png">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])

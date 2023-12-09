@@ -17,23 +17,42 @@
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">From {{ $tutorial->user->name }}</a>
                 </header>
                 <!-- Preview image figure-->
-                <figure class="mb-4"><img class="img-fluid rounded" src="/images/{{ $tutorial->image_path }}" alt="..."></figure>
+                <figure class="mb-4"><img class="img-fluid rounded" style="max-height: 300px; max-width: 300px" src="/images/{{ $tutorial->image_path }}" alt="..."></figure>
                 <!-- Post content-->
                 <section class="mb-5">
                     <p class="fs-5 mb-4">{{ $tutorial->description }}</p>
                 </section>
                 <div class="row">
+                    @auth
+                        <div class="card m-2 text-bg-dark" style="width: 18rem;">
+                            <div class="card-body">
+                            <h5 class="card-title">New Graph</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Create a new graph</h6>
+                            
+                            <a href="/editors" class="btn btn-light">Create</a>
+                            </div>
+                        </div>
+                    @else
+                        <div class="card m-2 text-bg-dark" style="width: 18rem;">
+                            <div class="card-body">
+                            <h5 class="card-title">login to create graph</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Create a new graph</h6>
+                            
+                            <a href="/login" class="btn btn-light">Login</a>
+                            </div>
+                        </div>
+                    @endauth
                     @foreach ($graphs as $graph)
                         <div class="card m-2" style="width: 18rem;">
                             <div class="card-body">
                             <h5 class="card-title">{{ $graph->name }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">from @ {{ $graph->user->name }}</h6>
-                            <a href="/editor/{{ $graph->id }}" class="card-link">show</a>
-                            <a href="#" class="card-link">Another link</a>
+                            
+                            <a href="{{ $graph->id }}" class="card-link">show</a>
                             </div>
                         </div>
                     @endforeach
-                  </div>
+                </div>
                   <br><br>
             </article>
             <!-- Comments section-->
@@ -68,7 +87,7 @@
                     </div>  
                 @else
                     <div class="card" style="text-align: center; padding: 6px">
-                        <p style="padding-top: 3px">{{__('To write a comment you need ')}}<a href="/login">{{__('Log in')}}</a> {{__('OR')}} <a href="/register">{{__('Register')}}</a></p>
+                        <p style="padding-top: 3px">To write a comment, please <a href="/login">{{__('Log in')}}</a> {{__('OR')}} <a href="/register">{{__('Register')}}</a></p>
                     </div>
                 @endif
                 <br>
@@ -105,30 +124,34 @@
                 <div class="card-header">Resources</div>
                 <div class="card-body">
                     <div class="">           
-                        <p><a href="/files/{{ $tutorial->file_path }}" class="btn btn-primary my-2" download><i class="fas fa-download"></i> Download</a></p>
+                        <p><a href="/files/{{ $tutorial->file_path }}" class="btn btn-primary my-2" download>Download</a></p>
                         <p><a href="{{ $tutorial->url }}" class="my-2">{{ $tutorial->url }}</a></p>   
                     </div>
                 </div>
             </div>
             <!-- Categories widget-->
             <div class="card mb-4">
-                <div class="card-header">Students</div>
+                <div class="card-header">Contributors</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Ahmed</a></li>
-                                <li><a href="#!">Adel</a></li>
-                                <li><a href="#!">Mohammed</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Ali</a></li>
-                                <li><a href="#!">Fahd</a></li>
-                                <li><a href="#!">Sara</a></li>
-                            </ul>
-                        </div>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col"> - </th>
+                                <th scope="col">@</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($graphs as $graph)
+                                    <tr>
+                                        <td>{{ $graph->user->name }}</td>
+                                        <td> - </td>
+                                        <td>{{ $graph->user->id }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

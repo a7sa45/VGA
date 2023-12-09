@@ -68,7 +68,7 @@
     <p class="lead">Welcome to "Visualize Graph Algorithms," your gateway to simplifying the world of graph algorithms through intuitive visualization.</p>
     <p class="lead">
       @auth
-        <a href="/editor" class="btn btn-lg btn-secondary">Start Editor</a>
+        <a href="/editors" class="btn btn-lg btn-secondary">Start Editor</a>
       @else
         <a href="/login" class="btn btn-lg btn-secondary">login</a>
       @endauth

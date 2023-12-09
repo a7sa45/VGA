@@ -40,7 +40,7 @@ Route::get('/get_token', function () {
 
 Route::get('/get_session', function () {
     $graph = request()->cookie('graph_id');
-    response('deleted')->cookie('graph_id', null, -1);
+    cookie('graph_id', null, -1);
     return $graph;
 });
 
