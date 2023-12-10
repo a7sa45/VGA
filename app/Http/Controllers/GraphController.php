@@ -42,7 +42,7 @@ class GraphController extends Controller
         //$graph->user_id = 1;
         $graph->save();
 
-        return "done";
+        return redirect()->route('home');
     }
 
     /**
